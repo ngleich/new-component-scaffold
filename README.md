@@ -7,7 +7,9 @@ Todo
 - [x] Add gulp with ES6
 - [x] Allow develop with ES6+Browserify
 - [x] Serve file with BrowserSync
-- [ ] Add testing support with Karma
+- [x] Add testing support with Karma
+  - [x] With jasmine
+  - [ ] With mocha and chai
 - [ ] Allow changing the js name to compile
 - [ ] Add support for SASS
 - [ ] Better documentation
