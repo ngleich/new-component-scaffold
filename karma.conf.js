@@ -9,6 +9,7 @@ module.exports = function(config) {
     files: [
       // add files to load to the browser like angular or jquery
       'src/**/*.js',
+      'test/**/*_helper.js'
       'test/**/*_spec.js'
     ],
 
@@ -17,6 +18,7 @@ module.exports = function(config) {
 
     preprocessors: {
       'src/**/*.js': ['browserify'],
+      'test/**/*_helper.js': ['browserify']
       'test/**/*_spec.js': ['browserify']
     },
 
