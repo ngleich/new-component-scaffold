@@ -7,13 +7,14 @@ import del from 'del';
 import runSequence from 'run-sequence';
 import browserify from 'browserify';
 import babelify from 'babelify';
+import { Server } from 'karma'
 //try to put this on $
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 
-
-
 const $ = gulpLoadPlugins();
+
+const jsFileToCompile = "main"
 
 // Lint JavaScript
 gulp.task('lint', () =>
@@ -38,10 +39,10 @@ gulp.task('scripts', () =>
   // gulp.src([
   //   './src/js/main.js'
   // ])
-  browserify('./src/js/main.js', { debug: true })
+  browserify(`./src/js/${jsFileToCompile}.js`, { debug: true })
     .transform(babelify)
     .bundle()
-    .pipe(source('main.js'))
+    .pipe(source(`${jsFileToCompile}.js`))
     .pipe(buffer())
     //.pipe($.newer('.tmp/js'))
     .pipe($.sourcemaps.init({loadMaps: true}))
@@ -49,7 +50,7 @@ gulp.task('scripts', () =>
     .pipe(gulp.dest('.tmp/js'))
 
     //dist
-    .pipe($.concat('main.min.js'))
+    .pipe($.concat(`${jsFileToCompile}.min.js`))
     .pipe($.uglify({preserveComments: 'some'}))
     // Output files
     .pipe($.size({title: 'scripts'}))
@@ -79,3 +80,9 @@ gulp.task('default', ['clean'], cb =>
   runSequence(['lint', 'scripts', 'copy'], cb)
 );
 
+gulp.task('test', done => {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
