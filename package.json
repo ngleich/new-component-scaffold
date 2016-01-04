@@ -1,23 +1,9 @@
 {
-  "name": "email-suggestion",
   "version": "1.0.0",
   "scripts": {
     "test": "gulp test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/restorando/email-suggestion.git"
-  },
-  "keywords": [
-    "email",
-    "suggestion",
-    "angular"
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/restorando/email-suggestion/issues"
-  },
-  "homepage": "https://github.com/restorando/email-suggestion",
   "devDependencies": {
     "babel-core": "^6.3.26",
     "babel-eslint": "^4.1.6",
